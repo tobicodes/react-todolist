@@ -25,7 +25,7 @@ class Todolist extends Component{
       );
     return (
       <div>
-         
+         {todos}
       </div> 
       )
   }

@@ -19,31 +19,26 @@ class NewTodoForm extends Component{
       });
     }
 
-
-    addTodo(){
-      this.props.title = this.state.maybeTitle;
-      this.props.description = this.state.maybeDescription; 
-    }
-
     handleSubmit(e){
       e.preventDefault;
+      this.populateTodos()
       this.setState({
-        maybeTitle : '',
-        maybeDescription:'',
         actualTitle:this.state.maybeTitle,
-        actualDescription:this.state.maybeDescription
+        actualDescription:this.state.maybeDescription,
+        maybeTitle : '',
+        maybeDescription:''
       });
-      this.props.addTodo();
     }
 
-     
-    
+    populateTodos(){
+      this.props.addTodo(this.state.maybeTitle, this.state.maybeDescription);
+    }
 
     render(){
       return(
         <div>
-          <h2 className="text-center"> Yet another todo app ;) </h2>
-          <form onSubmit={this.handleSubmit}>
+          <h2 className="text-center"> Yet another todo app! ;) </h2>
+          <form onSubmit={() => this.populateTodos()}>
             <input 
               name='maybeTitle'
               value={this.state.maybeTitle}
@@ -99,7 +94,13 @@ export default NewTodoForm;
       // then in your `App` you will handle that function being run
 
 
+// // your app should be in charge of passing an array of todos to the TodoList
 
+// and it should be in charge of getting data from the newTodo form 
+// and creating a new todo
+
+ 
+// and then re-rendering the todolist with the new todo
 
 
 
