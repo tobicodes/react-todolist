@@ -6,8 +6,6 @@ class NewTodoForm extends Component{
     this.state = {
       maybeTitle : '',
       maybeDescription:'',
-      actualTitle:'',
-      actualDescription:''
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,14 +18,14 @@ class NewTodoForm extends Component{
     }
 
     handleSubmit(e){
-      e.preventDefault;
-      this.populateTodos()
+      e.preventDefault();
+      this.populateTodos();
       this.setState({
-        actualTitle:this.state.maybeTitle,
-        actualDescription:this.state.maybeDescription,
         maybeTitle : '',
-        maybeDescription:''
-      });
+       maybeDescription:'',
+
+      })
+      
     }
 
     populateTodos(){
@@ -38,7 +36,7 @@ class NewTodoForm extends Component{
       return(
         <div>
           <h2 className="text-center"> Yet another todo app! ;) </h2>
-          <form onSubmit={() => this.populateTodos()}>
+          <form onSubmit={this.handleSubmit}>
             <input 
               name='maybeTitle'
               value={this.state.maybeTitle}
